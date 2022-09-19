@@ -25,13 +25,24 @@ RUN export PROJECT_NAME=$(gradle properties -q | grep "name:" | awk '{print $2}'
 # STAGE: Deploy
 FROM openjdk:11-jre-slim-buster
 
+# Non-Root User
+ARG USERNAME=appuser
+ARG GROUP=$USERNAME
+ARG USER_UID=1001
+ARG USER_GID=$USER_UID
+
 # Create app directory
 ENV APP_HOME=/home/app
 RUN mkdir -p $APP_HOME
+RUN addgroup --gid $USER_GID $GROUP
+RUN adduser --uid $USER_UID --gid $USER_GID $USERNAME
 WORKDIR $APP_HOME
 
 # Copy jar file over from builder stage
 COPY --from=builder /home/build/build/libs/app.jar $APP_HOME
+RUN chown $USER_UID:$USER_GID app.jar && chmod 700 app.jar
+
+USER $USERNAME
 
 EXPOSE 8080
 
