@@ -6,8 +6,12 @@ ENV BUILD_DIR=/home/build/
 RUN mkdir $BUILD_DIR
 WORKDIR $BUILD_DIR
 
+# Download Dependencies
+COPY build.gradle settings.gradle $BUILD_DIR
+RUN gradle build -x test --continue
+
 # Copy Source
-COPY . .
+COPY src src
 
 # Build jar
 RUN gradle build -x test
