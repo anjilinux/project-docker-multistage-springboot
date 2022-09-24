@@ -1,10 +1,4 @@
 pipeline {
-  agent {
-    docker {
-      image 'gradle:7.4.2-jdk11'
-      // args "--entrypoint='' -v /certs/client:/certs/client"
-    }
-  }
 
   // environment {
   //   PACKER_CACHE_DIR = "${env.WORKSPACE_TMP}/.packer.d/packer_cache"
@@ -17,6 +11,12 @@ pipeline {
 
   stages {
     stage('Gradle Build') {
+      agent {
+        docker {
+          image 'gradle:7.4.2-jdk11'
+          // args "--entrypoint='' -v /certs/client:/certs/client"
+        }
+      }
       steps {
         sh """
         #!/bin/sh
