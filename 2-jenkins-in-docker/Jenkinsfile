@@ -20,7 +20,7 @@ pipeline {
       steps {
         sh """
         #!/bin/sh
-        cd ../1-springboot-docker-demo
+        cd 1-springboot-docker-demo
         gradle build -x test
         """
       }
