@@ -1,5 +1,5 @@
 pipeline {
-
+  agent none
   // environment {
   //   PACKER_CACHE_DIR = "${env.WORKSPACE_TMP}/.packer.d/packer_cache"
   //   PACKER_CONFIG_DIR = "${env.WORKSPACE_TMP}/.packer.d"
