@@ -23,3 +23,7 @@ java --version
 # cleanup
 docker rmi springboot-demo:single-stage springboot-demo:multi-stage
 ```
+
+## Resources
+
+* <https://www.jenkins.io/doc/book/pipeline/docker/>

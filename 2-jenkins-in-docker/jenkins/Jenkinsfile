@@ -14,7 +14,6 @@ pipeline {
       agent {
         docker {
           image 'gradle:7.4.2-jdk11'
-          // args "--entrypoint='' -v /certs/client:/certs/client"
         }
       }
       steps {
@@ -23,6 +22,17 @@ pipeline {
         cd 2-jenkins-in-docker/app
         gradle build -x test
         """
+      }
+    }
+    stage('Build Docker Image') {
+      // agent {
+      //   docker {
+      //     image 'gradle:7.4.2-jdk11'
+      //   }
+      // }
+      steps {
+        sh 'cd 2-jenkins-in-docker/app'
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
       }
     }
   }
