@@ -37,11 +37,12 @@ pipeline {
       //   }
       // }
       node {
-        checkout scm
-        def customImage = docker.build("my-image:${env.BUILD_ID}")
-        // customImage.push()
+        steps {
+          checkout scm
+          def customImage = docker.build("my-image:${env.BUILD_ID}")
+          // customImage.push()
+        }
       }
-
     }
   }
 }
