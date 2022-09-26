@@ -22,7 +22,7 @@ pipeline {
     stage('Build Docker Image') {
       agent {
         docker {
-          image 'docker:20.10.18-dind'
+          image 'docker:20.10.18'
           args "--entrypoint='' -v /certs/client:/certs/client"
         }
       }
