@@ -30,6 +30,7 @@ pipeline {
       }
       steps {
         script {
+          sh "printenv"
           def buildContextPath = "./2-jenkins-in-docker/app"
           def dockerfile = 'Dockerfile'
           def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${buildContextPath}/${dockerfile} ${buildContextPath}")
