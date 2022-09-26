@@ -30,12 +30,18 @@ pipeline {
       //     image 'gradle:7.4.2-jdk11'
       //   }
       // }
-      steps {
-        script {
-          sh 'cd 2-jenkins-in-docker/app'
-          def customImage = docker.build("my-image:${env.BUILD_ID}")
-        }
+      // steps {
+      //   script {
+      //     sh 'cd 2-jenkins-in-docker/app'
+      //     def customImage = docker.build("my-image:${env.BUILD_ID}")
+      //   }
+      // }
+      node {
+        checkout scm
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
+        // customImage.push()
       }
+
     }
   }
 }
