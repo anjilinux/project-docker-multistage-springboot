@@ -32,8 +32,8 @@ pipeline {
       }
       steps {
         script {
-          sh 'cd 2-jenkins-in-docker/app'
-          def customImage = docker.build("my-image:${env.BUILD_ID}")
+          def dockerfile = 'Dockerfile'
+          def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./2-jenkins-in-docker/app")
         }
       }
     }
