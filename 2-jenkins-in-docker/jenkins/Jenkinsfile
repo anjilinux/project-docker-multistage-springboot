@@ -1,11 +1,6 @@
 pipeline {
   agent none
   environment {
-  //   PACKER_CACHE_DIR = "${env.WORKSPACE_TMP}/.packer.d/packer_cache"
-  //   PACKER_CONFIG_DIR = "${env.WORKSPACE_TMP}/.packer.d"
-  //   PACKER_HOME_DIR = "${env.WORKSPACE_TMP}/.packer.d"
-  //   PACKER_PLUGIN_PATH = "${env.WORKSPACE_TMP}/.packer.d/plugins"
-  //   TMPDIR = "${env.WORKSPACE_TMP}"
     DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
   }
 
@@ -28,6 +23,7 @@ pipeline {
       agent {
         docker {
           image 'docker:20.10.18-dind'
+          args "--entrypoint='' -v /certs/client:/certs/client"
         }
       }
       steps {
