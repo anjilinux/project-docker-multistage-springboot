@@ -2,20 +2,20 @@ pipeline {
   agent none
 
   stages {
-    // stage('Gradle Build') {
-    //   agent {
-    //     docker {
-    //       image 'gradle:7.4.2-jdk11'
-    //     }
-    //   }
-    //   steps {
-    //     sh """
-    //     #!/bin/sh
-    //     cd 2-jenkins-in-docker/app
-    //     gradle build -x test
-    //     """
-    //   }
-    // }
+    stage('Gradle Build') {
+      agent {
+        docker {
+          image 'gradle:7.5.0-jdk11'
+        }
+      }
+      steps {
+        sh """
+        #!/bin/sh
+        cd 2-jenkins-in-docker/app
+        gradle build -x test
+        """
+      }
+    }
     stage('Build Docker Image') {
       agent {
         docker {

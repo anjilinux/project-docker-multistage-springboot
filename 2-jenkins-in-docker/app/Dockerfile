@@ -1,5 +1,5 @@
 # STAGE: Build
-FROM gradle:7.4.2-jdk11 as builder
+FROM gradle:7.5.0-jdk11 as builder
 
 # Create Working Directory
 ENV BUILD_DIR=/home/build/
