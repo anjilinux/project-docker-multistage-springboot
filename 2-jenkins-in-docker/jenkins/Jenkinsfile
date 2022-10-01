@@ -25,7 +25,7 @@ pipeline {
       }
       environment {
         DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
-        DOCKER_CERT_PATH = "/certs/client"
+        DOCKER_CERT_PATH = "/certs/client" //DOCKER_TLS_CERTDIR
         DOCKER_TLS_VERIFY = "1"
       }
       steps {
