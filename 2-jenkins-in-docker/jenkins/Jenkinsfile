@@ -29,16 +29,9 @@ pipeline {
       steps {
         sh """
         #!/bin/sh
-        printenv
-        ls -la /certs/client
-        docker images
+        cd 2-jenkins-in-docker/app
+        docker build -t app:${env.BUILD_NUMBER} .
         """
-        // script {
-        //   sh "printenv"
-        //   def buildContextPath = "./2-jenkins-in-docker/app"
-        //   def dockerfile = 'Dockerfile'
-        //   def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${buildContextPath}/${dockerfile} ${buildContextPath}")
-        // }
       }
     }
   }
