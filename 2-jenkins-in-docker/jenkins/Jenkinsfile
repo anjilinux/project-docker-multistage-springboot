@@ -34,7 +34,7 @@ pipeline {
         #!/bin/sh
         printenv
         ls -la /certs/client
-        #docker images
+        docker images
         """
         // script {
         //   sh "printenv"
