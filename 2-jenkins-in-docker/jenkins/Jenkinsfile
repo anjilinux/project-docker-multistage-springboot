@@ -20,7 +20,7 @@ pipeline {
       agent {
         docker {
           image 'docker:20.10.18'
-          args "--entrypoint='' -v /certs/client:/certs/client --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1"
+          args "--entrypoint='' -v /certs/client:/certs/client --env DOCKER_HOST=tcp://172.18.0.2:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1"
         }
       }
       // environment {
