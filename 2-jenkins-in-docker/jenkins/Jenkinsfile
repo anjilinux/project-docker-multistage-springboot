@@ -33,7 +33,7 @@ pipeline {
         sh """
         #!/bin/sh
         printenv
-        // docker images
+        #docker images
         """
         // script {
         //   sh "printenv"
