@@ -20,7 +20,7 @@ pipeline {
       agent {
         docker {
           image 'docker:20.10.18'
-          args "--entrypoint='' -v /certs/client:/certs/client"
+          args "--entrypoint='' -v /certs/client:/certs/client --network jenkins"
         }
       }
       environment {
