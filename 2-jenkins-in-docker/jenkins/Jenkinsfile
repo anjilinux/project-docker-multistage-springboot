@@ -20,12 +20,12 @@ pipeline {
       agent {
         docker {
           image 'docker:20.10.18'
-          args "--entrypoint='' -v /certs/client:/certs/client --network jenkins"
+          args "--entrypoint='' -v /certs/client:/certs/client"
         }
       }
       environment {
         // DOCKER_HOST_IP = "docker"
-        DOCKER_HOST = "tcp://docker:2376"
+        DOCKER_HOST = "tcp://172.18.0.2:2376"
         // DOCKER_CERT_PATH = "/certs/client" //DOCKER_TLS_CERTDIR
         // DOCKER_TLS_VERIFY = "1"
       }
