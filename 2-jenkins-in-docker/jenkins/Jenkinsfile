@@ -17,17 +17,17 @@ pipeline {
     //   }
     // }
     stage('Build Docker Image') {
-      agent {
-        docker {
-          image 'docker:20.10.18'
-          args "--entrypoint='' -v /certs/client:/certs/client"
-        }
-      }
-      environment {
-        DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
-        DOCKER_CERT_PATH = "/certs/client" //DOCKER_TLS_CERTDIR
-        DOCKER_TLS_VERIFY = "1"
-      }
+      // agent {
+      //   docker {
+      //     image 'docker:20.10.18'
+      //     args "--entrypoint='' -v /certs/client:/certs/client"
+      //   }
+      // }
+      // environment {
+      //   DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
+      //   DOCKER_CERT_PATH = "/certs/client" //DOCKER_TLS_CERTDIR
+      //   DOCKER_TLS_VERIFY = "1"
+      // }
       steps {
         script {
           sh "printenv"
