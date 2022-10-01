@@ -24,15 +24,16 @@ pipeline {
         }
       }
       environment {
-        DOCKER_HOST_IP = "docker"
-        DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
-        DOCKER_CERT_PATH = "/certs/client" //DOCKER_TLS_CERTDIR
-        DOCKER_TLS_VERIFY = "1"
+        // DOCKER_HOST_IP = "docker"
+        DOCKER_HOST = "tcp://docker:2376"
+        // DOCKER_CERT_PATH = "/certs/client" //DOCKER_TLS_CERTDIR
+        // DOCKER_TLS_VERIFY = "1"
       }
       steps {
         sh """
         #!/bin/sh
         printenv
+        ls -la /certs/client
         #docker images
         """
         // script {
