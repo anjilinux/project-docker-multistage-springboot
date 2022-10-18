@@ -32,7 +32,7 @@ e. Start Docker-in-Docker:
 docker run --name docker-daemon --rm --detach \
   --privileged \
   --network jenkins \
-  --network-alias docker-daemon \
+  --network-alias docker \
   --publish 2376:2376 \
   --env DOCKER_TLS_CERTDIR=/certs \
   --volume jenkins-data:/var/jenkins_home \
@@ -54,7 +54,7 @@ docker run --name jenkins --rm --detach \
   --network jenkins \
   --publish 8080:8080 \
   --publish 50000:50000 \
-  --env DOCKER_HOST=tcp://docker-daemon:2376 \
+  --env DOCKER_HOST=tcp://docker:2376 \
   --env DOCKER_CERT_PATH=/certs/client \
   --env DOCKER_TLS_VERIFY=1 \
   --volume jenkins-data:/var/jenkins_home \
@@ -136,7 +136,7 @@ Run this command from your workstation to open a shell in a docker client contai
 # Interact with Docker
 docker run --name docker -it --rm --detach \
   --network jenkins \
-  --env DOCKER_HOST=tcp://docker-daemon:2376 \
+  --env DOCKER_HOST=tcp://docker:2376 \
   --env DOCKER_CERT_PATH=/certs/client \
   --env DOCKER_TLS_VERIFY=1 \
   --volume docker-client-certs:/certs/client:ro \
