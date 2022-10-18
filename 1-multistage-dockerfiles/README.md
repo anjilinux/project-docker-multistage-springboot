@@ -1,5 +1,9 @@
 # multi-stage-dockerfiles
 
+The instructions on this document are for the following YouTube video tutorial:
+
+[![Docker Multistage Build | How to build a Docker Image | Docker Tutorial](https://img.youtube.com/vi/fT3k5XN4WxM/0.jpg)](https://www.youtube.com/watch?v=fT3k5XN4WxM&ab_channel=FabioGomezDiaz "Docker Multistage Build | How to build a Docker Image | Docker Tutorial")
+
 ```bash
 # Build containers
 time docker build -t springboot-demo:single-stage -f Dockerfile-single .
