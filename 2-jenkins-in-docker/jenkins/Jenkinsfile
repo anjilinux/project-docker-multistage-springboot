@@ -1,0 +1,37 @@
+pipeline {
+  agent none
+  stages {
+    stage('Gradle Build') {
+      agent {
+        docker {
+          image 'gradle:7.5.0-jdk11'
+        }
+      }
+      steps {
+        sh """
+        #!/bin/sh
+        cd 2-jenkins-in-docker/app
+        gradle build -x test
+        """
+      }
+    }
+    stage('Build Docker Image') {
+      agent {
+        docker {
+          image 'docker:20.10.18'
+          args "--entrypoint='' -v /certs/client:/certs/client \
+                --env DOCKER_HOST=tcp://${DOCKER_HOST_IP}:2376 \
+                --env DOCKER_CERT_PATH=/certs/client \
+                --env DOCKER_TLS_VERIFY=1"
+        }
+      }
+      steps {
+        sh """
+        #!/bin/sh
+        cd 2-jenkins-in-docker/app
+        docker build -t app:${env.BUILD_NUMBER} .
+        """
+      }
+    }
+  }
+}
