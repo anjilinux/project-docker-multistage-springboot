@@ -1,4 +1,4 @@
-# springboot-docker-demo
+# jenkins-in-docker-demo
 
 ## 1. Setup Docker Daemon and Jenkins with Docker Client
 
