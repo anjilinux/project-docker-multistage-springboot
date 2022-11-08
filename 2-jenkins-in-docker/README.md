@@ -105,7 +105,7 @@ b. In the Job **Configuration** page, scroll to the **Pipeline** section and ent
 * In **Definition**, select `Pipeline script from SCM`.
 * In **SCM**, select `Git`.
 * In **Repository URL**, enter `https://github.com/fabiogomezdiaz/youtube-channel.git`.
-* In **Branch Specifier (blank for 'any')**, enter `master`.
+* In **Branch Specifier (blank for 'any')**, enter `main`.
 * In **Script Path**, enter `2-jenkins-in-docker/jenkins/Jenkinsfile`.
 * Click **Save**, which should take you home page of the `docker-pipeline` job.
 
