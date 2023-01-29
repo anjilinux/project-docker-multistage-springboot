@@ -15,4 +15,4 @@ RUN echo \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
-RUN jenkins-plugin-cli --plugins "docker-workflow"
+RUN jenkins-plugin-cli --plugins "docker-workflow" "ansicolor"
